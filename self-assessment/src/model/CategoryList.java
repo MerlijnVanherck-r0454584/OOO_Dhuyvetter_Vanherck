@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public class CategoryList {
 	private ArrayList<Category> categories;
 	
-	public void addCategory(Category newCategory) {
-		if (categories.contains(newCategory)) throw new IllegalArgumentException(newCategory + " is already in the list");
+	public void addCategory(Category category) {
+		if (categories.contains(category)) throw new IllegalArgumentException(category + " is already in the list");
 		
-		categories.add(newCategory);
+		categories.add(category);
 	}
 	
 	public void removeCategory(Category category) {
