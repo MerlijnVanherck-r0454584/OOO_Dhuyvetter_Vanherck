@@ -1,9 +1,9 @@
 package model;
 
-import java.util.ArrayList;
+import javafx.collections.ObservableList;
 
 public class CategoryList {
-	private ArrayList<Category> categories;
+	private ObservableList<Category> categories;
 	
 	public void addCategory(Category category) {
 		if (categories.contains(category)) throw new IllegalArgumentException(category + " is already in the list");
@@ -17,11 +17,11 @@ public class CategoryList {
 		categories.remove(category);
 	}
 
-	public ArrayList<Category> getCategories() {
+	public ObservableList<Category> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(ArrayList<Category> categories) {
+	public void setCategories(ObservableList<Category> categories) {
 		this.categories = categories;
 	}
 }

@@ -11,14 +11,15 @@ public class FileManager {
 	
 	public static String readEntireFile(String fileName) throws FileNotFoundException {
 		Scanner fileReader = new Scanner(new File(fileName));
-		String fileText = "";
+		String fileText = "";	
 		
 		while(fileReader.hasNextLine())
 		{
-		   fileText = fileReader.nextLine();
+			  fileText = fileReader.nextLine();
 		}
-		
+			
 		fileReader.close();
+		
 		return fileText;
 	}
 	
