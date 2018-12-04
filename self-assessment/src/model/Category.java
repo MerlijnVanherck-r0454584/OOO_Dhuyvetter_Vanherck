@@ -1,8 +1,8 @@
 package model;
 
 public class Category {
-	private String name;
-	private String description;
+	public String name;
+	public String description;
 	
 	
 	private String getName() {

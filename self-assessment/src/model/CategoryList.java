@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 public class CategoryList {
-	private ArrayList<Category> categories;
+	private ArrayList<Category> categories = new ArrayList<>();
 	
 	public void addCategory(Category category) {
 		if (categories.contains(category)) throw new IllegalArgumentException(category + " is already in the list");

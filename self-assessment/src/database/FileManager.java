@@ -5,17 +5,19 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileManager {
 	
-	public static String readEntireFile(String fileName) throws FileNotFoundException {
+	public static ArrayList<String> readEntireFile(String fileName) throws FileNotFoundException {
 		Scanner fileReader = new Scanner(new File(fileName));
-		String fileText = "";
+		fileReader.useDelimiter(";|\n");
+		ArrayList<String> fileText = new ArrayList<>();
 		
-		while(fileReader.hasNextLine())
+		while(fileReader.hasNext())
 		{
-		   fileText = fileReader.nextLine();
+		   fileText.add(fileReader.next());
 		}
 		
 		fileReader.close();
