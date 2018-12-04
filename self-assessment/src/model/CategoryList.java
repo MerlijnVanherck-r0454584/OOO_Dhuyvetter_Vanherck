@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 
+import javafx.collections.ObservableList;
+
 public class CategoryList {
 	private ArrayList<Category> categories = new ArrayList<>();
 	

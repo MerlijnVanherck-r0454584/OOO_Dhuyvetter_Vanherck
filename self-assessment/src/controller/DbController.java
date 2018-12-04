@@ -7,6 +7,25 @@ import database.FileManager;
 import model.Category;
 
 public class DbController {
+
+	private FileManager fileManager = new FileManager();
+	private Controller categoryC = new Controller();
+	
+	public FileManager getFileManager() {
+		return fileManager;
+	}
+
+	public void setFileManager(FileManager fileManager) {
+		this.fileManager = fileManager;
+	}
+
+	public Controller getCategoryC() {
+		return categoryC;
+	}
+
+	public void setCategoryC(Controller categoryC) {
+		this.categoryC = categoryC;
+	}
 	
 	public void getCategories(ArrayList<Category> list) {
 		try {

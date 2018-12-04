@@ -19,8 +19,9 @@ public class FileManager {
 		{
 		   fileText.add(fileReader.next());
 		}
-		
+			
 		fileReader.close();
+		
 		return fileText;
 	}
 	
