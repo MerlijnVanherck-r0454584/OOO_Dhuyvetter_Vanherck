@@ -3,6 +3,7 @@ package controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Category;
+import model.Subcategory;
 import model.CategoryList;
 
 public class Controller {
@@ -23,4 +24,12 @@ public class Controller {
 		this.categories = FXCollections.observableArrayList(this.categoryList.getCategories());
 	}
 	
+	public ObservableList<Category> getMainCategories() {
+		ObservableList<Category> list = FXCollections.observableArrayList(this.categoryList.getCategories());
+		for (Category c : this.categories)
+			if (c instanceof Subcategory)
+				list.remove(c);
+		
+		return list;
+	}
 }

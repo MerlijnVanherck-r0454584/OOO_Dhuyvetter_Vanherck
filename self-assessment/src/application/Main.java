@@ -24,7 +24,7 @@ public class Main extends Application {
 			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
 
 			CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane(controller);
-			CategoryDetailPane categoryDetailPanel = new CategoryDetailPane();
+			CategoryDetailPane categoryDetailPanel = new CategoryDetailPane(controller);
 
 			TestPane testPane = new TestPane();
 			MessagePane messagePane = new MessagePane();

@@ -1,5 +1,6 @@
 package view.panels;
 
+import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,8 +15,11 @@ import javafx.scene.layout.GridPane;
 public class QuestionOverviewPane extends GridPane {
 	private TableView table;
 	private Button btnNew;
+	private Controller controller;
 	
-	public QuestionOverviewPane() {
+	public QuestionOverviewPane(Controller controller) {
+		this.controller = controller;
+		
 		this.setPadding(new Insets(5, 5, 5, 5));
         this.setVgap(5);
         this.setHgap(5);
@@ -31,6 +35,8 @@ public class QuestionOverviewPane extends GridPane {
         descriptionCol.setCellValueFactory(new PropertyValueFactory("category"));
         table.getColumns().add(descriptionCol);
 		this.add(table, 0, 1, 2, 6);
+
+		table.setItems(controller.getQuestions());
 		
 		btnNew = new Button("New");
 		this.add(btnNew, 0, 11, 1, 1);
