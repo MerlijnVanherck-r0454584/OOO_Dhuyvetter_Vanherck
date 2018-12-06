@@ -1,9 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
+import controller.Question;
+
 public class Category {
-	public String name;
-	public String description;
-	
+	private String name;
+	private String description;
+	private ArrayList<Question> questions;
+	private int score = 0;
 	
 	public String getName() {
 		return name;
@@ -24,5 +29,29 @@ public class Category {
 	public Category(String name, String description) {
 		this.name = name;
 		this.description = description;
+	}
+
+	public ArrayList<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(ArrayList<Question> questions) {
+		this.questions = questions;
+	}
+	
+	public void addQuestion(Question question) {
+		questions.add(question);
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+	
+	public void increaseScore() {
+		this.score += 1;
 	}
 }
