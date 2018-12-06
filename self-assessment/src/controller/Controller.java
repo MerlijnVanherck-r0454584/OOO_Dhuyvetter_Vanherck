@@ -2,7 +2,7 @@ package controller;
 
 import java.io.FileNotFoundException;
 
-import database.FileManager;
+import database.TXTImporter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import model.Category;
