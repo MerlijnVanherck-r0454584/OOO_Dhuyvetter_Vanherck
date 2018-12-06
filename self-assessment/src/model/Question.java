@@ -1,9 +1,17 @@
 package model;
 
 public class Question {
+	private String question;
 	private String[] answers;
-	private Category category;
 	
+	private String getQuestion() {
+		return question;
+	}
+
+	private void setQuestion(String question) {
+		this.question = question;
+	}
+
 	public String[] getAnswers() {
 		return answers;
 	}
@@ -12,9 +20,9 @@ public class Question {
 		this.answers = answers;
 	}
 
-	public Question(String[] answers, Category category) {
+	public Question(String question, String[] answers) {
+		this.question = question;
 		this.answers = answers;
-		this.category = category;
 	}
 
 	public Boolean isCorrectAnswer(String givenAnswer) {

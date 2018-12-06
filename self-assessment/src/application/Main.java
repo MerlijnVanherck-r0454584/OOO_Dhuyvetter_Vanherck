@@ -20,7 +20,7 @@ public class Main extends Application {
 
 		try {
 			Controller controller = new Controller();
-			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane();
+			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(controller);
 			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
 
 			CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane(controller);

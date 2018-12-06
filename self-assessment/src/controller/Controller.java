@@ -38,4 +38,15 @@ public class Controller {
 		
 		return list;
 	}
+
+	public ObservableList<Question> getQuestions() {
+		ArrayList<Question> questions = new ArrayList<>();
+		for (Category c : this.categoryList.getCategories())
+			for (Question q : c.getQuestions())
+				questions.add(q);
+		
+		ObservableList<Question> list = FXCollections.observableArrayList(questions);
+		
+		return list;
+	}
 }

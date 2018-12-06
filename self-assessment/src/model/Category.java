@@ -2,8 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-import controller.Question;
-
 public class Category {
 	private String name;
 	private String description;

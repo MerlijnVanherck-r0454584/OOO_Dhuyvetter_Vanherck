@@ -52,15 +52,22 @@ public class TXTImporter extends DBImporter {
 				result.add(new Category(temp[0], temp[1]));
 			else if (temp.length == 3)
 				result.add(new Subcategory(temp[0], temp[1], this.getCategoryFromText(temp[2], result)));
-			else throw new IllegalArgumentException("Invalid text database.");
+			else throw new IllegalArgumentException("Invalid category text database.");
 		}
 		return result;
 	}
 
 	@Override
-	public ArrayList<Question> getQuestions() {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Question> getQuestions(ArrayList<Category> list) {
+		ArrayList<Question> result = new ArrayList<>();
+		String[] temp;
+		for (String s : readLines("testdatabase/vraag.txt")) {
+			temp = s.split(";");
+			if (temp.length >= 2)
+				result.add(new Question(temp[0], new ArrayList<Question>().toArray(a)));
+			else throw new IllegalArgumentException("Invalid question text database.");
+		}
+		return result;
 	}
 	
 	private Category getCategoryFromText(String text, ArrayList<Category> list) {
