@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 import model.Category;
 import model.Question;
+import model.Subcategory;
 
 public class TXTImporter extends DBImporter {
 	
@@ -43,14 +44,29 @@ public class TXTImporter extends DBImporter {
 
 	@Override
 	public ArrayList<Category> getCategories() {
-		for (String s : readLines("testdatabase/groep.txt"))
-			;
-		return null;
+		ArrayList<Category> result = new ArrayList<>();
+		String[] temp;
+		for (String s : readLines("testdatabase/groep.txt")) {
+			temp = s.split(";");
+			if (temp.length == 2)
+				result.add(new Category(temp[0], temp[1]));
+			else if (temp.length == 3)
+				result.add(new Subcategory(temp[0], temp[1], this.getCategoryFromText(temp[2], result)));
+			else throw new IllegalArgumentException("Invalid text database.");
+		}
+		return result;
 	}
 
 	@Override
 	public ArrayList<Question> getQuestions() {
 		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	private Category getCategoryFromText(String text, ArrayList<Category> list) {
+		for (Category c : list)
+			if (c.getName().equals(text))
+				return c;
 		return null;
 	}
 }
