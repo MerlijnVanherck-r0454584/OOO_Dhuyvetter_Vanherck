@@ -3,6 +3,7 @@ package model;
 public class Question {
 	private String question;
 	private String[] answers;
+	private Category category;
 	
 	public String getQuestion() {
 		return question;
@@ -20,9 +21,10 @@ public class Question {
 		this.answers = answers;
 	}
 
-	public Question(String question, String[] answers) {
+	public Question(String question, Category category, String[] answers) {
 		this.question = question;
 		this.answers = answers;
+		this.category = category;
 	}
 
 	public Boolean isCorrectAnswer(String givenAnswer) {
@@ -30,6 +32,14 @@ public class Question {
 			return true;
 		}
 		return false;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 
 }

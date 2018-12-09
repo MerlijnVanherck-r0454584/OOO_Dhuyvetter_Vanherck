@@ -1,34 +1,42 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Test {
 
-	public Test(CategoryList categories) {
-		this.categories = categories;
-	}
-	
-	private CategoryList categories;
-	
-	public CategoryList getCategories() {
-		return categories;
-	}
+	private ArrayList<Question> questions;
 
-	public void setCategories(CategoryList categories) {
-		this.categories = categories;
+	public Test(ArrayList<Question> questions) {
+		this.questions = questions;
 	}
+	
+	
 	
 	public int[] getTotalScore() {
 		int[] score = new int[2];
 		score[0] = 0;
 		score[1] = 0; //maxScore
 		
-		for (Category category : categories.getCategories()) {
-			score[0] += category.getScore();
+		for (Question q : questions) {		
+			score[0] += 1;
 			score[1] += category.getQuestions().size();
 		}
 		
 		return score;	
 	}
 	
+	public ArrayList<Question> getQuestions() {
+		return questions;
+	}
+
+
+
+	public void setQuestions(ArrayList<Question> questions) {
+		this.questions = questions;
+	}
+
+
+
 	public int[] getScoreForCategory(Category category) {
 		int[] score = new int[2];		
 		score[0] = category.getScore();

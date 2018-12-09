@@ -1,11 +1,8 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Category {
 	private String name;
 	private String description;
-	private ArrayList<Question> questions;
 	private int score = 0;
 	
 	public String getName() {
@@ -27,18 +24,6 @@ public class Category {
 	public Category(String name, String description) {
 		this.name = name;
 		this.description = description;
-	}
-
-	public ArrayList<Question> getQuestions() {
-		return questions;
-	}
-
-	public void setQuestions(ArrayList<Question> questions) {
-		this.questions = questions;
-	}
-	
-	public void addQuestion(Question question) {
-		questions.add(question);
 	}
 
 	public int getScore() {

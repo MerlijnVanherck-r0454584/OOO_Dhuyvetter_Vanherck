@@ -15,14 +15,14 @@ public class Controller {
 	private DbController dbController = new DbController();
 	private CategoryList categoryList = new CategoryList();
 	private ArrayList<Question> questions = new ArrayList<Question>();
-	private Test test = new Test(categoryList);
+	private Test test = new Test(questions);
 
 	public ObservableList<Category> getCategories() {
 		return categories;
 	}
 	
 	public Controller() {
-		update(test.getCategories());
+		update(test.getQuestions());
 	}
 
 	public void update(CategoryList categoryList) {
@@ -39,14 +39,4 @@ public class Controller {
 		return list;
 	}
 
-	public ObservableList<Question> getQuestions() {
-		ArrayList<Question> questions = new ArrayList<>();
-		for (Category c : this.categoryList.getCategories())
-			for (Question q : c.getQuestions())
-				questions.add(q);
-		
-		ObservableList<Question> list = FXCollections.observableArrayList(questions);
-		
-		return list;
-	}
 }
