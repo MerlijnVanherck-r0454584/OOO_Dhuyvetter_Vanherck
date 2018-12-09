@@ -4,11 +4,11 @@ public class Question {
 	private String question;
 	private String[] answers;
 	
-	private String getQuestion() {
+	public String getQuestion() {
 		return question;
 	}
 
-	private void setQuestion(String question) {
+	public void setQuestion(String question) {
 		this.question = question;
 	}
 
@@ -27,18 +27,9 @@ public class Question {
 
 	public Boolean isCorrectAnswer(String givenAnswer) {
 		if (answers[0].equals(givenAnswer)) {
-			category.increaseScore();
 			return true;
 		}
 		return false;
-	}
-
-	public Category getCategory() {
-		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 
 }

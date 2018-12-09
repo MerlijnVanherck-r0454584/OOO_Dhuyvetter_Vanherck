@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class Subcategory extends Category {
 	
 	private Category mainCategory;

@@ -1,7 +1,5 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Test {
 
 	public Test(CategoryList categories) {
@@ -37,6 +35,17 @@ public class Test {
 		score[1] = category.getQuestions().size();
 		
 		return score;	
+	}
+	
+	public Boolean isQuestionCorrect(Category category, Question question, String givenAnswer) {
+		if (!category.getQuestions().contains(question)) throw new IllegalArgumentException("question must be from the category given as parameter");
+		
+		if (question.isCorrectAnswer(givenAnswer)) {
+			category.increaseScore();
+			return true;
+		}
+		return false;
+			
 	}
 
 }
