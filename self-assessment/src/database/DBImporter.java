@@ -7,6 +7,6 @@ import model.Question;
 
 public abstract class DBImporter {
 	public abstract ArrayList<Category> getCategories();
-	
+
 	public abstract ArrayList<Question> getQuestions(ArrayList<Category> list);
 }

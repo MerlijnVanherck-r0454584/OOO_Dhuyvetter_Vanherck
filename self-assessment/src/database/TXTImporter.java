@@ -13,32 +13,31 @@ import model.Question;
 import model.Subcategory;
 
 public class TXTImporter extends DBImporter {
-	
+
 	public static ArrayList<String> readLines(String fileName) {
 		ArrayList<String> fileText = new ArrayList<>();
-		
+
 		try {
 			Scanner fileReader = new Scanner(new File(fileName));
-			
-			while(fileReader.hasNextLine())
-			{
-			   fileText.add(fileReader.nextLine());
+
+			while (fileReader.hasNextLine()) {
+				fileText.add(fileReader.nextLine());
 			}
-				
+
 			fileReader.close();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return fileText;
 	}
-	
+
 	public static void writeToFile(String fileName, String textToWrite) throws IOException {
 		Writer fileWriter = new FileWriter(fileName, true);
-		
+
 		fileWriter.write(textToWrite);
-		
+
 		fileWriter.close();
 	}
 
@@ -52,7 +51,8 @@ public class TXTImporter extends DBImporter {
 				result.add(new Category(temp[0], temp[1]));
 			else if (temp.length == 3)
 				result.add(new Subcategory(temp[0], temp[1], this.getCategoryFromText(temp[2], result)));
-			else throw new IllegalArgumentException("Invalid category text database.");
+			else
+				throw new IllegalArgumentException("Invalid category text database.");
 		}
 		return result;
 	}
@@ -66,12 +66,12 @@ public class TXTImporter extends DBImporter {
 			temp = s.split(";");
 			if (temp.length >= 3) {
 				for (Category c : test) {
-					if (c.getName().equals(temp[1]) ) {
+					if (c.getName().equals(temp[1])) {
 						result.add(new Question(temp[0], c, temp[2].split("/")));
 					}
 				}
-			}
-			else throw new IllegalArgumentException("Invalid question text database.");
+			} else
+				throw new IllegalArgumentException("Invalid question text database.");
 		}
 		return result;
 	}
@@ -83,5 +83,5 @@ public class TXTImporter extends DBImporter {
 		}
 		return null;
 	}
-	
+
 }

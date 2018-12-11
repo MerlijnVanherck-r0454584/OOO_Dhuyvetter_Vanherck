@@ -4,7 +4,7 @@ public class Question {
 	private String question;
 	private String[] answers;
 	private Category category;
-	
+
 	public String getQuestion() {
 		return question;
 	}

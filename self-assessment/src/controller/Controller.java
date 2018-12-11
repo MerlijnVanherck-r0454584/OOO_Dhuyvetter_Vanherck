@@ -20,22 +20,22 @@ public class Controller {
 	public ObservableList<Category> getCategories() {
 		return categories;
 	}
-	
+
 	public Controller() {
-		update(test.getQuestions());
+		init(test.getQuestions());
 	}
 
-	public void update(CategoryList categoryList) {
+	public void init(CategoryList categoryList) {
 		dbController.getCategories(categoryList.getCategories());
-		this.categories = FXCollections.observableArrayList(test.getCategories().getCategories());
+		this.categories = FXCollections.observableArrayList(test.getCategories());
 	}
-	
+
 	public ObservableList<Category> getMainCategories() {
 		ObservableList<Category> list = FXCollections.observableArrayList(this.categoryList.getCategories());
 		for (Category c : this.categories)
 			if (c instanceof Subcategory)
 				list.remove(c);
-		
+
 		return list;
 	}
 

@@ -22,15 +22,15 @@ public class QuestionDetailPane extends GridPane {
 	public QuestionDetailPane() {
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
-		
+
 		this.setPadding(new Insets(5, 5, 5, 5));
-        this.setVgap(5);
-        this.setHgap(5);
-        
+		this.setVgap(5);
+		this.setHgap(5);
+
 		add(new Label("Question: "), 0, 0, 1, 1);
 		questionField = new TextField();
 		add(questionField, 1, 0, 2, 1);
-		
+
 		add(new Label("Statement: "), 0, 1, 1, 1);
 		statementField = new TextField();
 		add(statementField, 1, 1, 2, 1);
@@ -67,7 +67,7 @@ public class QuestionDetailPane extends GridPane {
 		btnOK.isDefaultButton();
 		btnOK.setText("Save");
 		add(btnOK, 1, 11, 2, 1);
-		
+
 	}
 
 	public void setSaveAction(EventHandler<ActionEvent> saveAction) {

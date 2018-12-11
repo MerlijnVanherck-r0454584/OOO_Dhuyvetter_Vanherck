@@ -20,7 +20,7 @@ public class CategoryDetailPane extends GridPane {
 		this.controller = controller;
 		this.setPrefHeight(150);
 		this.setPrefWidth(300);
-		
+
 		this.setPadding(new Insets(5, 5, 5, 5));
 		this.setVgap(5);
 		this.setHgap(5);
@@ -44,18 +44,18 @@ public class CategoryDetailPane extends GridPane {
 		btnOK = new Button("Save");
 		btnOK.isDefaultButton();
 		this.add(btnOK, 1, 3, 1, 1);
-		
+
 		setSaveAction(new EventHandler<ActionEvent>() {
-	        public void handle(ActionEvent event) {
-	                System.out.print("Hello World !!");
-	        }
-	    });
-		
+			public void handle(ActionEvent event) {
+				System.out.print("Hello World !!");
+			}
+		});
+
 		setCancelAction(new EventHandler<ActionEvent>() {
-	        public void handle(ActionEvent event) {
-	                System.out.print("Hello World !!");
-	        }
-	    });
+			public void handle(ActionEvent event) {
+				System.out.print("Hello World !!");
+			}
+		});
 	}
 
 	public void setSaveAction(EventHandler<ActionEvent> saveAction) {

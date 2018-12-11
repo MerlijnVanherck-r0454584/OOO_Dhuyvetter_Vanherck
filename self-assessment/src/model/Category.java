@@ -4,7 +4,7 @@ public class Category {
 	private String name;
 	private String description;
 	private int score = 0;
-	
+
 	public String getName() {
 		return name;
 	}
@@ -33,7 +33,7 @@ public class Category {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
 	public void increaseScore() {
 		this.score += 1;
 	}
