@@ -1,16 +1,16 @@
 package model;
 
 public class Question {
-	private String question;
-	private String[] answers;
-	private Category category;
+	private String questionName;
+	private String[] answers; //index 0 is correct answer
+	private String category; //helper string for view
 
-	public String getQuestion() {
-		return question;
+	public String getQuestionName() {
+		return questionName;
 	}
 
-	public void setQuestion(String question) {
-		this.question = question;
+	public void setQuestionName(String name) {
+		this.questionName = name;
 	}
 
 	public String[] getAnswers() {
@@ -21,10 +21,10 @@ public class Question {
 		this.answers = answers;
 	}
 
-	public Question(String question, Category category, String[] answers) {
-		this.question = question;
+	public Question(String questionName, String[] answers, String category) {
+		this.questionName = questionName;
 		this.answers = answers;
-		this.category = category;
+		this.category= category;
 	}
 
 	public Boolean isCorrectAnswer(String givenAnswer) {
@@ -34,12 +34,8 @@ public class Question {
 		return false;
 	}
 
-	public Category getCategory() {
+	public String getCategory() {
 		return category;
-	}
-
-	public void setCategory(Category category) {
-		this.category = category;
 	}
 
 }

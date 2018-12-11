@@ -29,14 +29,14 @@ public class QuestionOverviewPane extends GridPane {
 		table = new TableView<>();
 		table.setPrefWidth(REMAINING);
 		TableColumn nameCol = new TableColumn<>("Question");
-		nameCol.setCellValueFactory(new PropertyValueFactory<>("question"));
+		nameCol.setCellValueFactory(new PropertyValueFactory<>("questionName"));
 		table.getColumns().add(nameCol);
 		TableColumn descriptionCol = new TableColumn<>("Category");
 		descriptionCol.setCellValueFactory(new PropertyValueFactory("category"));
 		table.getColumns().add(descriptionCol);
 		this.add(table, 0, 1, 2, 6);
 
-		//table.setItems(controller.getQuestions());
+		table.setItems(controller.getQuestions());
 
 		btnNew = new Button("New");
 		this.add(btnNew, 0, 11, 1, 1);

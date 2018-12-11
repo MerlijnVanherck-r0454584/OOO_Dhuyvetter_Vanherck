@@ -4,32 +4,35 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import model.Category;
-import model.Subcategory;
-import model.CategoryList;
-import model.Question;
-import model.Test;
+import model.*;
 
 public class Controller {
-	private ObservableList<Category> categories;
 	private DbController dbController = new DbController();
-	private CategoryList categoryList = new CategoryList();
-	private ArrayList<Question> questions = new ArrayList<Question>();
-	private Test test = new Test(questions);
+	private Test test;
 
-	public ObservableList<Category> getCategories() {
-		return categories;
-	}
 
 	public Controller() {
-		init(test.getQuestions());
+		test = new Test(dbController.getCategories());
+		for (Category c : test.getCategories()) {
+			c.initQuestions(dbController.getQuestions(c));
+		}
 	}
-
-	public void init(CategoryList categoryList) {
-		dbController.getCategories(categoryList.getCategories());
-		this.categories = FXCollections.observableArrayList(test.getCategories());
+	
+	public ObservableList<Category> getCategories() {
+		return test.getCategories();
 	}
+	
+	public ObservableList<Question> getQuestions() {
+		ArrayList<Question> list =  new ArrayList<Question>();
+		for (Category c : test.getCategories()) {
+			list.addAll(c.getQuestions());
+		}
+		return FXCollections.observableArrayList(list);
+	}
+	
 
+	
+/*
 	public ObservableList<Category> getMainCategories() {
 		ObservableList<Category> list = FXCollections.observableArrayList(this.categoryList.getCategories());
 		for (Category c : this.categories)
@@ -38,5 +41,5 @@ public class Controller {
 
 		return list;
 	}
-
+*/
 }

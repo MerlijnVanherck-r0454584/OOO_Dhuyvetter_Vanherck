@@ -2,17 +2,21 @@ package controller;
 
 import java.util.ArrayList;
 
+import database.DBImporter;
 import database.TXTImporter;
 import model.Category;
+import model.Question;
 import model.Subcategory;
 
 public class DbController {
+	
+	private DBImporter importer = new TXTImporter(); 
 
-	public void getCategories(ArrayList<Category> list) {
-		list.addAll((new TXTImporter()).getCategories());
+	public ArrayList<Category> getCategories() {
+		return importer.getCategories();
 	}
-
-	public void getQuestions() {
-
+	
+	public ArrayList<Question> getQuestions(Category c) {
+		return importer.getQuestions(c);
 	}
 }

@@ -2,21 +2,20 @@ package model;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Test {
-	private ArrayList<Question> questions;
+	private ObservableList<Category> categories;
 
-	public ArrayList<Question> getQuestions() {
-		return questions;
+	public ObservableList<Category> getCategories() {
+		return categories;
 	}
 
-	public void setQuestions(ArrayList<Question> questions) {
-		this.questions = questions;
+	public Test(ArrayList<Category> categories) {
+		this.categories = FXCollections.observableArrayList(categories);
 	}
-
-	public Test(ArrayList<Question> questions) {
-		this.questions = questions;
-	}
-
+/*
 	public int[] getTotalScore() {
 		int[] score = new int[2];
 		score[0] = 0;
@@ -28,16 +27,6 @@ public class Test {
 		}
 
 		return score;
-	}
-	
-	public ArrayList<Category> getCategories() {
-		ArrayList<Category> categories = new ArrayList<>();
-		
-		for (Question q : this.questions)
-			if (! categories.contains(q.getCategory()))
-				categories.add(q.getCategory());
-				
-		return categories;
 	}
 	
 	public ArrayList<Question> getQuestionsOfCategory(Category category) {
@@ -69,5 +58,7 @@ public class Test {
 		return false;
 
 	}
+*/
+
 
 }

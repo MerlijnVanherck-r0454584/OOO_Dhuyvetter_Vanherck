@@ -58,18 +58,16 @@ public class TXTImporter extends DBImporter {
 	}
 
 	@Override
-	public ArrayList<Question> getQuestions(ArrayList<Category> list) {
+	public ArrayList<Question> getQuestions(Category category) {
 		ArrayList<Question> result = new ArrayList<>();
-		ArrayList<Category> test = getCategories();
+		
 		String[] temp;
 		for (String s : readLines("testdatabase/vraag.txt")) {
 			temp = s.split(";");
 			if (temp.length >= 3) {
-				for (Category c : test) {
-					if (c.getName().equals(temp[1])) {
-						result.add(new Question(temp[0], c, temp[2].split("/")));
+					if (category.getName().equals(temp[1])) {
+						result.add(new Question(temp[0], temp[2].split("/"), temp[1]));
 					}
-				}
 			} else
 				throw new IllegalArgumentException("Invalid question text database.");
 		}

@@ -1,9 +1,14 @@
 package model;
 
+import java.util.ArrayList;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 public class Category {
 	private String name;
 	private String description;
-	private int score = 0;
+	private ObservableList<Question> questions;
 
 	public String getName() {
 		return name;
@@ -25,16 +30,18 @@ public class Category {
 		this.name = name;
 		this.description = description;
 	}
-
-	public int getScore() {
-		return score;
+	
+	public void addQuestion (Question question) {
+		questions.add(question);
+	}
+	
+	public void initQuestions(ArrayList<Question> questions) {
+		this.questions = FXCollections.observableArrayList(questions);
 	}
 
-	public void setScore(int score) {
-		this.score = score;
+	public ObservableList<Question> getQuestions() {
+		return questions;
 	}
 
-	public void increaseScore() {
-		this.score += 1;
-	}
+	
 }
