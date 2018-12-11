@@ -9,18 +9,44 @@ import javafx.scene.layout.Pane;
 
 public class AssesMainPane extends BorderPane {
 
-	public AssesMainPane(Pane messagePane, Pane categoryOverviewPanel, Pane questionOverviewPanel) {
+	Tab categoriesTab;
+	Tab questionsTab;
+	Tab categoryDetailTab;
+	Tab questionDetailTab;
+	Tab categoryOverviewTab;
+	Tab questionOverviewTab;
+	
+	
+	public AssesMainPane(Pane messagePane, Pane categoryOverviewPanel, Pane questionOverviewPanel, QuestionDetailPane questionDetailPane, CategoryDetailPane categoryDetailPanel) {
 		TabPane tabPane = new TabPane();
 
 		FlowPane messageBox = new FlowPane(messagePane);
 		messageBox.setAlignment(Pos.CENTER);
 		Tab testTab = new Tab("Test", messageBox);
-		Tab categoriesTab = new Tab("Categories", categoryOverviewPanel);
-		Tab questionsTab = new Tab("Questions", questionOverviewPanel);
+		
+		categoryDetailTab = new Tab("Category", categoryDetailPanel);
+		questionDetailTab = new Tab("Categories", questionDetailPane);
+		
+		categoryOverviewTab = new Tab("Categories", categoryOverviewPanel);
+		questionOverviewTab = new Tab("Questions", questionOverviewPanel);
+		
+		categoriesTab = categoryOverviewTab;
+		questionsTab = questionOverviewTab;
+		
 		tabPane.getTabs().add(testTab);
 		tabPane.getTabs().add(categoriesTab);
 		tabPane.getTabs().add(questionsTab);
 
 		this.setCenter(tabPane);
+	}
+	
+	public void switchCategoryTab(CategoryDetailPane cdPane) {
+		if (categoriesTab == categoryOverviewTab) categoriesTab = categoryDetailTab;
+		if (categoriesTab == categoryDetailTab) categoriesTab = categoryOverviewTab;
+	}
+	
+	public void switchQuestionTab(QuestionDetailPane qdPane) {
+		if (questionsTab == questionOverviewTab) questionsTab = questionDetailTab;
+		if (questionsTab == questionDetailTab) questionsTab = questionOverviewTab;
 	}
 }
