@@ -15,20 +15,20 @@ public class AssesMainPane extends BorderPane {
 	Tab questionDetailTab;
 	Tab categoryOverviewTab;
 	Tab questionOverviewTab;
+	TabPane tabPane = new TabPane();
 	
 	
-	public AssesMainPane(Pane messagePane, Pane categoryOverviewPanel, Pane questionOverviewPanel, QuestionDetailPane questionDetailPane, CategoryDetailPane categoryDetailPanel) {
-		TabPane tabPane = new TabPane();
+	public AssesMainPane(Pane messagePane, Pane categoryOverviewPane, Pane questionOverviewPane, QuestionDetailPane questionDetailPane, CategoryDetailPane categoryDetailPane) {
 
 		FlowPane messageBox = new FlowPane(messagePane);
 		messageBox.setAlignment(Pos.CENTER);
 		Tab testTab = new Tab("Test", messageBox);
 		
-		categoryDetailTab = new Tab("Category", categoryDetailPanel);
-		questionDetailTab = new Tab("Categories", questionDetailPane);
+		categoryDetailTab = new Tab("Category", categoryDetailPane);
+		questionDetailTab = new Tab("Question", questionDetailPane);
 		
-		categoryOverviewTab = new Tab("Categories", categoryOverviewPanel);
-		questionOverviewTab = new Tab("Questions", questionOverviewPanel);
+		categoryOverviewTab = new Tab("Categories", categoryOverviewPane);
+		questionOverviewTab = new Tab("Questions", questionOverviewPane);
 		
 		categoriesTab = categoryOverviewTab;
 		questionsTab = questionOverviewTab;
@@ -40,13 +40,35 @@ public class AssesMainPane extends BorderPane {
 		this.setCenter(tabPane);
 	}
 	
-	public void switchCategoryTab(CategoryDetailPane cdPane) {
-		if (categoriesTab == categoryOverviewTab) categoriesTab = categoryDetailTab;
-		if (categoriesTab == categoryDetailTab) categoriesTab = categoryOverviewTab;
+	public void switchCategoryTab() {
+		if (categoriesTab == categoryOverviewTab) {
+			
+			tabPane.getTabs().remove(categoriesTab);
+			categoriesTab = categoryDetailTab;
+			tabPane.getTabs().add(categoriesTab);
+			tabPane.getSelectionModel().select(categoriesTab);
+		}
+		else if (categoriesTab == categoryDetailTab) {
+			tabPane.getTabs().remove(categoriesTab);
+			categoriesTab = categoryOverviewTab;
+			tabPane.getTabs().add(categoriesTab);
+			tabPane.getSelectionModel().select(categoriesTab);
+		}
 	}
 	
-	public void switchQuestionTab(QuestionDetailPane qdPane) {
-		if (questionsTab == questionOverviewTab) questionsTab = questionDetailTab;
-		if (questionsTab == questionDetailTab) questionsTab = questionOverviewTab;
+	public void switchQuestionTab() {
+		if (questionsTab == questionOverviewTab) {
+			
+			tabPane.getTabs().remove(questionsTab);
+			questionsTab = questionDetailTab;
+			tabPane.getTabs().add(questionsTab);
+			tabPane.getSelectionModel().select(questionsTab);
+		}
+		else if (questionsTab == questionDetailTab) {
+			tabPane.getTabs().remove(questionsTab);
+			questionsTab = questionOverviewTab;
+			tabPane.getTabs().add(questionsTab);
+			tabPane.getSelectionModel().select(questionsTab);
+		}
 	}
 }

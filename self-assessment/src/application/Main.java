@@ -1,6 +1,8 @@
 package application;
 
+import controller.CategoryListener;
 import controller.Controller;
+import controller.QuestionListener;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -23,7 +25,7 @@ public class Main extends Application {
 			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(controller);
 			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
 
-			CategoryOverviewPane categoryOverviewPanel = new CategoryOverviewPane(controller);
+			CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(controller);
 			CategoryDetailPane categoryDetailPanel = new CategoryDetailPane(controller);
 
 			TestPane testPane = new TestPane();
@@ -32,10 +34,15 @@ public class Main extends Application {
 			Group root = new Group();
 			Scene scene = new Scene(root, 750, 400);
 
-			BorderPane borderPane = new AssesMainPane(messagePane, categoryOverviewPanel, questionOverviewPane, questionDetailPane, categoryDetailPanel);
+			AssesMainPane borderPane = new AssesMainPane(messagePane, categoryOverviewPane, questionOverviewPane, questionDetailPane, categoryDetailPanel);
 			borderPane.prefHeightProperty().bind(scene.heightProperty());
 			borderPane.prefWidthProperty().bind(scene.widthProperty());
 
+			CategoryListener cListener = new CategoryListener(borderPane);
+			QuestionListener qListener = new QuestionListener(borderPane);
+			categoryOverviewPane.setNewAction(cListener);
+			questionOverviewPane.setNewAction(qListener);
+			
 			root.getChildren().add(borderPane);
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
