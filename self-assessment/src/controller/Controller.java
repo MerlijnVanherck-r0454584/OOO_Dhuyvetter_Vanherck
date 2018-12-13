@@ -31,15 +31,28 @@ public class Controller {
 	}
 	
 
-	
-/*
-	public ObservableList<Category> getMainCategories() {
-		ObservableList<Category> list = FXCollections.observableArrayList(this.categoryList.getCategories());
-		for (Category c : this.categories)
-			if (c instanceof Subcategory)
-				list.remove(c);
+	public ObservableList<String> getMainCategoryNames() {
+		ArrayList<String> list = new ArrayList<String>();
+		
+		for (Category c : getCategories()) {
+			if (!(c instanceof Subcategory)) {
+				list.add(c.getName());
+			}
 
-		return list;
+		}
+		
+		return FXCollections.observableArrayList(list);
 	}
-*/
+
+	public Category getCategoryFromName(String text) {
+		for (Category c : getCategories()) {
+			if (c.getName().equals(text))
+				return c;
+		}
+		return null;
+	}
+	
+	public DbController getDbController() {
+		return dbController;
+	}
 }

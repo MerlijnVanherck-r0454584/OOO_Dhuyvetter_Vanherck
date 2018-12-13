@@ -1,5 +1,6 @@
 package application;
 
+import controller.CategoryDetailPaneListener;
 import controller.CategoryListener;
 import controller.Controller;
 import controller.QuestionListener;
@@ -17,24 +18,26 @@ import view.panels.QuestionOverviewPane;
 import view.panels.TestPane;
 
 public class Main extends Application {
+	
+	Controller controller = new Controller();
+	
 	@Override
 	public void start(Stage primaryStage) {
 
 		try {
-			Controller controller = new Controller();
 			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(controller);
 			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
 
 			CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(controller);
-			CategoryDetailPane categoryDetailPanel = new CategoryDetailPane(controller);
-
+			CategoryDetailPane categoryDetailPane = new CategoryDetailPane(controller);
+			
 			TestPane testPane = new TestPane();
 			MessagePane messagePane = new MessagePane();
 
 			Group root = new Group();
 			Scene scene = new Scene(root, 750, 400);
 
-			AssesMainPane borderPane = new AssesMainPane(messagePane, categoryOverviewPane, questionOverviewPane, questionDetailPane, categoryDetailPanel);
+			AssesMainPane borderPane = new AssesMainPane(messagePane, categoryOverviewPane, questionOverviewPane, questionDetailPane, categoryDetailPane);
 			borderPane.prefHeightProperty().bind(scene.heightProperty());
 			borderPane.prefWidthProperty().bind(scene.widthProperty());
 
@@ -42,6 +45,12 @@ public class Main extends Application {
 			QuestionListener qListener = new QuestionListener(borderPane);
 			categoryOverviewPane.setNewAction(cListener);
 			questionOverviewPane.setNewAction(qListener);
+			
+			CategoryDetailPaneListener cdpListener = new CategoryDetailPaneListener(categoryDetailPane, borderPane);
+			categoryDetailPane.setSaveAction(cdpListener);
+			categoryDetailPane.setCancelAction(cdpListener);
+
+			
 			
 			root.getChildren().add(borderPane);
 			primaryStage.setScene(scene);
@@ -56,4 +65,10 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
+	
+	@Override
+	public void stop() {
+		controller.getDbController().storeCategories();
+	}
+	
 }
