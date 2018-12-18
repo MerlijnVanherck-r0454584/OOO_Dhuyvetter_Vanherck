@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
 import model.*;
 
 public class Controller {
@@ -30,7 +31,15 @@ public class Controller {
 		return FXCollections.observableArrayList(list);
 	}
 	
-
+	public ObservableList<String> getCategoryNames() {
+		ArrayList<String> list = new ArrayList<String>();
+		
+		for (Category c : getCategories())
+			list.add(c.getName());
+		
+		return FXCollections.observableArrayList(list);
+	}
+	
 	public ObservableList<String> getMainCategoryNames() {
 		ArrayList<String> list = new ArrayList<String>();
 		
@@ -43,6 +52,7 @@ public class Controller {
 		
 		return FXCollections.observableArrayList(list);
 	}
+	
 
 	public Category getCategoryFromName(String text) {
 		for (Category c : getCategories()) {

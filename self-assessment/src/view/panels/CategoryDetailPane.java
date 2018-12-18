@@ -1,6 +1,6 @@
 package view.panels;
 
-import controller.CategoryDetailPaneListener;
+import controller.CategoryDetailListener;
 import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -49,11 +49,6 @@ public class CategoryDetailPane extends GridPane {
 		btnOK.isDefaultButton();
 		this.add(btnOK, 1, 3, 1, 1);
 
-		setCancelAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent event) {
-				System.out.print("Hello World !!");
-			}
-		});
 	}
 
 	public String getTitleFieldContents() {
@@ -65,7 +60,7 @@ public class CategoryDetailPane extends GridPane {
 	}
 
 	public String getCategoryField() {
-		return (String)categoryField.getSelectionModel().getSelectedItem();
+		return (String) categoryField.getSelectionModel().getSelectedItem();
 	}
 
 	public Button getBtnOK() {

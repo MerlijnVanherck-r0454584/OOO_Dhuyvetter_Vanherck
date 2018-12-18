@@ -1,19 +1,18 @@
 package controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import model.Category;
 import model.Subcategory;
 import view.panels.AssesMainPane;
 import view.panels.CategoryDetailPane;
 
-public class CategoryDetailPaneListener implements EventHandler<ActionEvent>{
+public class CategoryDetailListener implements EventHandler<ActionEvent>{
 
 	private CategoryDetailPane cdPane;
 	private AssesMainPane borderPane;
 	
-	public CategoryDetailPaneListener(CategoryDetailPane categoryDetailPane, AssesMainPane borderPane) {
+	public CategoryDetailListener(CategoryDetailPane categoryDetailPane, AssesMainPane borderPane) {
 		cdPane = categoryDetailPane;
 	this.borderPane = borderPane;
 	}

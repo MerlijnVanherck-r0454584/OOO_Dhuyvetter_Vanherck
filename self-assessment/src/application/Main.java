@@ -1,8 +1,9 @@
 package application;
 
-import controller.CategoryDetailPaneListener;
+import controller.CategoryDetailListener;
 import controller.CategoryListener;
 import controller.Controller;
+import controller.QuestionDetailListener;
 import controller.QuestionListener;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -26,7 +27,7 @@ public class Main extends Application {
 
 		try {
 			QuestionOverviewPane questionOverviewPane = new QuestionOverviewPane(controller);
-			QuestionDetailPane questionDetailPane = new QuestionDetailPane();
+			QuestionDetailPane questionDetailPane = new QuestionDetailPane(controller);
 
 			CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(controller);
 			CategoryDetailPane categoryDetailPane = new CategoryDetailPane(controller);
@@ -37,22 +38,24 @@ public class Main extends Application {
 			Group root = new Group();
 			Scene scene = new Scene(root, 750, 400);
 
-			AssesMainPane borderPane = new AssesMainPane(messagePane, categoryOverviewPane, questionOverviewPane, questionDetailPane, categoryDetailPane);
-			borderPane.prefHeightProperty().bind(scene.heightProperty());
-			borderPane.prefWidthProperty().bind(scene.widthProperty());
+			AssesMainPane assesMainPane = new AssesMainPane(messagePane, categoryOverviewPane, questionOverviewPane, questionDetailPane, categoryDetailPane);
+			assesMainPane.prefHeightProperty().bind(scene.heightProperty());
+			assesMainPane.prefWidthProperty().bind(scene.widthProperty());
 
-			CategoryListener cListener = new CategoryListener(borderPane);
-			QuestionListener qListener = new QuestionListener(borderPane);
+			CategoryListener cListener = new CategoryListener(assesMainPane);
+			QuestionListener qListener = new QuestionListener(assesMainPane);
 			categoryOverviewPane.setNewAction(cListener);
 			questionOverviewPane.setNewAction(qListener);
 			
-			CategoryDetailPaneListener cdpListener = new CategoryDetailPaneListener(categoryDetailPane, borderPane);
+			CategoryDetailListener cdpListener = new CategoryDetailListener(categoryDetailPane, assesMainPane);
 			categoryDetailPane.setSaveAction(cdpListener);
 			categoryDetailPane.setCancelAction(cdpListener);
-
 			
+			QuestionDetailListener qdListener = new QuestionDetailListener(questionDetailPane, assesMainPane);
+			questionDetailPane.setSaveAction(qdListener);
+			questionDetailPane.setCancelAction(qdListener);
 			
-			root.getChildren().add(borderPane);
+			root.getChildren().add(assesMainPane);
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
 

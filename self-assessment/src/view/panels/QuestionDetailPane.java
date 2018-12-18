@@ -1,5 +1,6 @@
 package view.panels;
 
+import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -8,6 +9,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -18,8 +20,51 @@ public class QuestionDetailPane extends GridPane {
 	private TextField questionField, statementField, feedbackField;
 	private Button btnAdd, btnRemove;
 	private ComboBox categoryField;
+	private Controller controller;
 
-	public QuestionDetailPane() {
+	public Button getBtnOK() {
+		return btnOK;
+	}
+
+	public Button getBtnCancel() {
+		return btnCancel;
+	}
+
+	public TextArea getStatementsArea() {
+		return statementsArea;
+	}
+
+	public TextField getQuestionField() {
+		return questionField;
+	}
+
+	public TextField getStatementField() {
+		return statementField;
+	}
+
+	public TextField getFeedbackField() {
+		return feedbackField;
+	}
+
+	public Button getBtnAdd() {
+		return btnAdd;
+	}
+
+	public Button getBtnRemove() {
+		return btnRemove;
+	}
+
+	public ComboBox getCategoryField() {
+		return categoryField;
+	}
+	
+	public Controller getController() {
+		return controller;
+	}
+
+	public QuestionDetailPane(Controller controller) {
+		this.controller = controller;
+		
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
 
@@ -54,6 +99,7 @@ public class QuestionDetailPane extends GridPane {
 		add(new Label("Category: "), 0, 9, 1, 1);
 		categoryField = new ComboBox();
 		add(categoryField, 1, 9, 2, 1);
+		categoryField.setItems(controller.getCategoryNames());
 
 		add(new Label("Feedback: "), 0, 10, 1, 1);
 		feedbackField = new TextField();
@@ -78,15 +124,26 @@ public class QuestionDetailPane extends GridPane {
 		btnCancel.setOnAction(cancelAction);
 	}
 
+	public void emptyFields() {
+		questionField.clear();
+		statementField.clear();
+		feedbackField.clear();
+		statementsArea.clear();
+		categoryField.getSelectionModel().clearSelection();
+	}
+	
 	class AddStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
+			statementsArea.insertText(statementsArea.getText().length(), statementField.getText() + "\n");
+			statementField.clear();
 		}
 	}
 
 	class RemoveStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {
+			statementsArea.replaceSelection("");
 		}
 	}
 }
