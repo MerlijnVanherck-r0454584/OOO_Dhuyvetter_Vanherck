@@ -45,18 +45,19 @@ public class TestPane extends GridPane {
 		}
 		return selected;
 	}
-	
+
 	public void setQuestion(Question question) {
 		this.questionField.setText(question.getQuestionName());
-		for (String s : question.getRandomOrderAnswers())
+		for (String s : question.getRandomOrderAnswers()) {
 			this.statementGroup.getToggles().add(new RadioButton(s));
+		}
 	}
-	
+
 	public void clearFields() {
 		this.questionField.setText("");
 		this.statementGroup.getToggles().clear();
 	}
-	
+
 	public void setSubmitAction(EventHandler<ActionEvent> newAction) {
 		this.submitButton.setOnAction(newAction);
 	}
