@@ -9,6 +9,7 @@ public class Category {
 	private String name;
 	private String description;
 	private ObservableList<Question> questions;
+	private int score;
 
 	public String getName() {
 		return name;
@@ -26,12 +27,21 @@ public class Category {
 		this.description = description;
 	}
 
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
 	public Category(String name, String description) {
 		this.name = name;
 		this.description = description;
 	}
 	
 	public void addQuestion (Question question) {
+		question.setCategory(this.name); //ensure consistency for the helper string
 		questions.add(question);
 	}
 	
@@ -41,6 +51,10 @@ public class Category {
 
 	public ObservableList<Question> getQuestions() {
 		return questions;
+	}
+	
+	public void increaseScore() {
+		this.score++;
 	}
 
 	

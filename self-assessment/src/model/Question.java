@@ -1,5 +1,9 @@
 package model;
 
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Question {
 	private String questionName;
 	private String[] answers; //index 0 is correct answer
@@ -36,6 +40,16 @@ public class Question {
 
 	public String getCategory() {
 		return category;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	public List<String> getRandomOrderAnswers() {
+		List<String> list = Arrays.asList(this.getAnswers());
+		Collections.shuffle(list);
+		return list;
 	}
 
 }

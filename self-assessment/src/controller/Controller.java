@@ -11,6 +11,9 @@ public class Controller {
 	private DbController dbController = new DbController();
 	private Test test;
 
+	public Test getTest() {
+		return test;
+	}
 
 	public Controller() {
 		test = new Test(dbController.getCategories());
@@ -18,6 +21,8 @@ public class Controller {
 			c.initQuestions(dbController.getQuestions(c));
 		}
 	}
+	
+	
 	
 	public ObservableList<Category> getCategories() {
 		return test.getCategories();
@@ -47,7 +52,6 @@ public class Controller {
 			if (!(c instanceof Subcategory)) {
 				list.add(c.getName());
 			}
-
 		}
 		
 		return FXCollections.observableArrayList(list);

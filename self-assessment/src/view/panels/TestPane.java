@@ -2,14 +2,15 @@ package view.panels;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
+import model.Question;
 
 public class TestPane extends GridPane {
 	private Label questionField;
@@ -30,6 +31,7 @@ public class TestPane extends GridPane {
 		statementGroup = new ToggleGroup();
 
 		submitButton = new Button("Submit");
+		add(submitButton, 0, 11, 1, 1);
 	}
 
 	public void setProcessAnswerAction(EventHandler<ActionEvent> processAnswerAction) {
@@ -42,5 +44,20 @@ public class TestPane extends GridPane {
 			selected.add(statementGroup.getSelectedToggle().getUserData().toString());
 		}
 		return selected;
+	}
+	
+	public void setQuestion(Question question) {
+		this.questionField.setText(question.getQuestionName());
+		for (String s : question.getRandomOrderAnswers())
+			this.statementGroup.getToggles().add(new RadioButton(s));
+	}
+	
+	public void clearFields() {
+		this.questionField.setText("");
+		this.statementGroup.getToggles().clear();
+	}
+	
+	public void setSubmitAction(EventHandler<ActionEvent> newAction) {
+		this.submitButton.setOnAction(newAction);
 	}
 }

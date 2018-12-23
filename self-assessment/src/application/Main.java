@@ -3,8 +3,10 @@ package application;
 import controller.CategoryDetailListener;
 import controller.CategoryListener;
 import controller.Controller;
+import controller.MessageListener;
 import controller.QuestionDetailListener;
 import controller.QuestionListener;
+import controller.TestListener;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -38,7 +40,7 @@ public class Main extends Application {
 			Group root = new Group();
 			Scene scene = new Scene(root, 750, 400);
 
-			AssesMainPane assesMainPane = new AssesMainPane(messagePane, categoryOverviewPane, questionOverviewPane, questionDetailPane, categoryDetailPane);
+			AssesMainPane assesMainPane = new AssesMainPane(messagePane, testPane, categoryOverviewPane, questionOverviewPane, questionDetailPane, categoryDetailPane);
 			assesMainPane.prefHeightProperty().bind(scene.heightProperty());
 			assesMainPane.prefWidthProperty().bind(scene.widthProperty());
 
@@ -54,6 +56,12 @@ public class Main extends Application {
 			QuestionDetailListener qdListener = new QuestionDetailListener(questionDetailPane, assesMainPane);
 			questionDetailPane.setSaveAction(qdListener);
 			questionDetailPane.setCancelAction(qdListener);
+			
+			MessageListener mListener = new MessageListener(controller, assesMainPane);
+			messagePane.setTestAction(mListener);
+			
+			TestListener tListener = new TestListener(controller, testPane, assesMainPane);
+			testPane.setSubmitAction(tListener);
 			
 			root.getChildren().add(assesMainPane);
 			primaryStage.setScene(scene);

@@ -2,6 +2,7 @@ package view.panels;
 
 import java.util.Observer;
 
+import controller.Controller;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
@@ -27,14 +28,14 @@ public class MessagePane extends GridPane {
 		this.setHgap(5);
 
 		testButton = new Button("Evaluate");
-		testButton.setOnAction(new EventHandler<ActionEvent>() { // TODO remove or generalize
-
-			@Override
-			public void handle(ActionEvent event) {
-			}
-		});
+		
+		
 		add(testButton, 0, 1, 1, 1);
 		setHalignment(testButton, HPos.CENTER);
+	}
+	
+	public void setTestAction(EventHandler<ActionEvent> newAction) {
+		testButton.setOnAction(newAction);
 	}
 
 }
