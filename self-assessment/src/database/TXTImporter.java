@@ -60,14 +60,14 @@ public class TXTImporter extends DBImporter {
 	@Override
 	public ArrayList<Question> getQuestions(Category category) {
 		ArrayList<Question> result = new ArrayList<>();
-		
+
 		String[] temp;
 		for (String s : readLines("testdatabase/vraag.txt")) {
 			temp = s.split(";");
 			if (temp.length >= 4) {
-					if (category.getName().equals(temp[1])) {
-						result.add(new Question(temp[0], temp[3].split("/"), temp[1], temp[2]));
-					}
+				if (category.getName().equals(temp[1])) {
+					result.add(new Question(temp[0], temp[3].split("/"), temp[1], temp[2]));
+				}
 			} else
 				throw new IllegalArgumentException("Invalid question text database.");
 		}
@@ -87,8 +87,8 @@ public class TXTImporter extends DBImporter {
 		for (String s : readLines("testdatabase/options.txt"))
 			if (s.startsWith("resultType"))
 				return s.split("=")[1];
-		
-		return "score"; //default is to use score
+
+		return "score"; // default is to use score
 	}
 
 }

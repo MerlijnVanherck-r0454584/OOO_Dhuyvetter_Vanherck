@@ -12,7 +12,8 @@ public class TestListener implements EventHandler<ActionEvent> {
 	AssesMainPane assesMainPane;
 	MessagePane messagePane;
 
-	public TestListener(Controller controller, TestPane testPane, MessagePane messagePane, AssesMainPane assesMainPane) {
+	public TestListener(Controller controller, TestPane testPane, MessagePane messagePane,
+			AssesMainPane assesMainPane) {
 		this.controller = controller;
 		this.testPane = testPane;
 		this.assesMainPane = assesMainPane;
@@ -23,11 +24,11 @@ public class TestListener implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent arg0) {
 		if (testPane.getAnswer() == null)
 			return;
-		
+
 		controller.getTest().checkAnswer(testPane.getAnswer());
 		controller.getTest().advanceTest();
 		testPane.clearFields();
-		
+
 		if (controller.getTest().getCurrentQuestion() != null)
 			testPane.setQuestion(controller.getTest().getCurrentQuestion());
 		else {

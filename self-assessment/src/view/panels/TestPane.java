@@ -42,7 +42,7 @@ public class TestPane extends GridPane {
 			return null;
 		return ((RadioButton) statementGroup.getSelectedToggle()).getText();
 	}
-	
+
 	public void setQuestion(Question question) {
 		RadioButton rb;
 		this.questionField.setText(question.getQuestionName());

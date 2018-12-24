@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import view.panels.AssesMainPane;
 
-public class CategoryListener implements EventHandler<ActionEvent>{
+public class CategoryListener implements EventHandler<ActionEvent> {
 
 	private AssesMainPane mainPane;
 

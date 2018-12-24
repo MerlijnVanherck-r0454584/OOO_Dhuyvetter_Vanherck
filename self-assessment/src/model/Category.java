@@ -39,12 +39,12 @@ public class Category {
 		this.name = name;
 		this.description = description;
 	}
-	
-	public void addQuestion (Question question) {
-		question.setCategory(this.name); //ensure consistency for the helper string
+
+	public void addQuestion(Question question) {
+		question.setCategory(this.name); // ensure consistency for the helper string
 		questions.add(question);
 	}
-	
+
 	public void initQuestions(ArrayList<Question> questions) {
 		this.questions = FXCollections.observableArrayList(questions);
 	}
@@ -52,10 +52,9 @@ public class Category {
 	public ObservableList<Question> getQuestions() {
 		return questions;
 	}
-	
+
 	public void increaseScore() {
 		this.score++;
 	}
 
-	
 }

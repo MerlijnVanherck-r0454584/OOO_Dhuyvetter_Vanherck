@@ -70,7 +70,7 @@ public class CategoryDetailPane extends GridPane {
 	public Button getBtnCancel() {
 		return btnCancel;
 	}
-	
+
 	public void emptyFields() {
 		titleField.clear();
 		descriptionField.clear();

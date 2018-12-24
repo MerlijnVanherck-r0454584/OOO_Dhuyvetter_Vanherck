@@ -21,9 +21,9 @@ import view.panels.QuestionOverviewPane;
 import view.panels.TestPane;
 
 public class Main extends Application {
-	
+
 	Controller controller = new Controller();
-	
+
 	@Override
 	public void start(Stage primaryStage) {
 
@@ -33,14 +33,15 @@ public class Main extends Application {
 
 			CategoryOverviewPane categoryOverviewPane = new CategoryOverviewPane(controller);
 			CategoryDetailPane categoryDetailPane = new CategoryDetailPane(controller);
-			
+
 			TestPane testPane = new TestPane();
 			MessagePane messagePane = new MessagePane();
 
 			Group root = new Group();
 			Scene scene = new Scene(root, 750, 400);
 
-			AssesMainPane assesMainPane = new AssesMainPane(messagePane, testPane, categoryOverviewPane, questionOverviewPane, questionDetailPane, categoryDetailPane);
+			AssesMainPane assesMainPane = new AssesMainPane(messagePane, testPane, categoryOverviewPane,
+					questionOverviewPane, questionDetailPane, categoryDetailPane);
 			assesMainPane.prefHeightProperty().bind(scene.heightProperty());
 			assesMainPane.prefWidthProperty().bind(scene.widthProperty());
 
@@ -48,21 +49,21 @@ public class Main extends Application {
 			QuestionListener qListener = new QuestionListener(assesMainPane);
 			categoryOverviewPane.setNewAction(cListener);
 			questionOverviewPane.setNewAction(qListener);
-			
+
 			CategoryDetailListener cdpListener = new CategoryDetailListener(categoryDetailPane, assesMainPane);
 			categoryDetailPane.setSaveAction(cdpListener);
 			categoryDetailPane.setCancelAction(cdpListener);
-			
+
 			QuestionDetailListener qdListener = new QuestionDetailListener(questionDetailPane, assesMainPane);
 			questionDetailPane.setSaveAction(qdListener);
 			questionDetailPane.setCancelAction(qdListener);
-			
+
 			MessageListener mListener = new MessageListener(controller, testPane, assesMainPane);
 			messagePane.setTestAction(mListener);
-			
+
 			TestListener tListener = new TestListener(controller, testPane, messagePane, assesMainPane);
 			testPane.setProcessAnswerAction(tListener);
-			
+
 			root.getChildren().add(assesMainPane);
 			primaryStage.setScene(scene);
 			primaryStage.sizeToScene();
@@ -76,10 +77,10 @@ public class Main extends Application {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	@Override
 	public void stop() {
 		controller.getDbController().storeCategories();
 	}
-	
+
 }

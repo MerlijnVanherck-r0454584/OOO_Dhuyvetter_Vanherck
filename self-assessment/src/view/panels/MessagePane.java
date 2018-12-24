@@ -27,7 +27,7 @@ public class MessagePane extends GridPane {
 		this.setPadding(new Insets(5, 5, 5, 5));
 		this.setVgap(5);
 		this.setHgap(5);
-		
+
 		results = new Label();
 		results.setText("You have not taken this test yet.");
 		add(results, 0, 0, 1, 1);
@@ -36,11 +36,11 @@ public class MessagePane extends GridPane {
 		add(testButton, 0, 1, 1, 1);
 		setHalignment(testButton, HPos.CENTER);
 	}
-	
+
 	public void setTestAction(EventHandler<ActionEvent> newAction) {
 		testButton.setOnAction(newAction);
 	}
-	
+
 	public void displayResults(ArrayList<String> results) {
 		this.results.setText("");
 		for (String s : results)

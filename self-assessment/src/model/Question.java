@@ -7,8 +7,8 @@ import java.util.List;
 
 public class Question {
 	private String questionName;
-	private String[] answers; //index 0 is correct answer
-	private String category; //helper string for view
+	private String[] answers; // index 0 is correct answer
+	private String category; // helper string for view
 	private String feedback;
 
 	public String getQuestionName() {
@@ -38,7 +38,7 @@ public class Question {
 	public Question(String questionName, String[] answers, String category, String feedback) {
 		this.questionName = questionName;
 		this.answers = answers;
-		this.category= category;
+		this.category = category;
 		this.feedback = feedback;
 	}
 
@@ -52,11 +52,11 @@ public class Question {
 	public String getCategory() {
 		return category;
 	}
-	
+
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	
+
 	public List<String> getRandomOrderAnswers() {
 		List<String> list = new ArrayList<>();
 		for (int i = 0; i < this.answers.length; i++)

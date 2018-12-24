@@ -57,14 +57,14 @@ public class QuestionDetailPane extends GridPane {
 	public ComboBox getCategoryField() {
 		return categoryField;
 	}
-	
+
 	public Controller getController() {
 		return controller;
 	}
 
 	public QuestionDetailPane(Controller controller) {
 		this.controller = controller;
-		
+
 		this.setPrefHeight(300);
 		this.setPrefWidth(320);
 
@@ -131,7 +131,7 @@ public class QuestionDetailPane extends GridPane {
 		statementsArea.clear();
 		categoryField.getSelectionModel().clearSelection();
 	}
-	
+
 	class AddStatementListener implements EventHandler<ActionEvent> {
 		@Override
 		public void handle(ActionEvent e) {

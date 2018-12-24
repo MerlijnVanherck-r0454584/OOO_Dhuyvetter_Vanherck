@@ -9,19 +9,19 @@ import model.Question;
 import model.Subcategory;
 
 public class DbController {
-	
-	private DBImporter importer = new TXTImporter(); 
+
+	private DBImporter importer = new TXTImporter();
 
 	public ArrayList<Category> getCategories() {
 		return importer.getCategories();
 	}
-	
+
 	public ArrayList<Question> getQuestions(Category c) {
 		return importer.getQuestions(c);
 	}
-	
+
 	public boolean checkUseFeedback() {
-		return importer.getResultOption().equals("feedback") ? true : false ;
+		return importer.getResultOption().equals("feedback") ? true : false;
 	}
 
 	public void storeCategories() {

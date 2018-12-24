@@ -25,7 +25,7 @@ public class Test {
 	public Test(ArrayList<Category> categories) {
 		this.categories = FXCollections.observableArrayList(categories);
 	}
-	
+
 	public int[] getTotalScore() {
 		int[] score = new int[2];
 		score[0] = 0;
@@ -38,7 +38,7 @@ public class Test {
 
 		return score;
 	}
-	
+
 	public void toggleUseFeedback() {
 		this.useFeedback = this.useFeedback ? false : true;
 	}
@@ -50,10 +50,10 @@ public class Test {
 
 		return score;
 	}
-	
+
 	public ArrayList<String> getResultsSummary() {
 		ArrayList<String> results = new ArrayList<String>();
-		
+
 		if (this.useFeedback) {
 			if (this.feedbackString.isEmpty())
 				results.add("Excellent! All questions answered correctly.");
@@ -61,12 +61,12 @@ public class Test {
 				results = this.feedbackString;
 		} else {
 			results.add("Total: " + this.getTotalScore()[0] + "/" + this.getTotalScore()[1]);
-		
+
 			for (Category c : this.categories) {
 				results.add(c.getName() + ": " + this.getScoreForCategory(c)[0] + "/" + this.getScoreForCategory(c)[1]);
 			}
 		}
-		
+
 		return results;
 	}
 
@@ -76,14 +76,14 @@ public class Test {
 		else
 			this.feedbackString.add(this.currentQuestion.getFeedback());
 	}
-	
+
 	public void startTest() {
 		for (Category c : this.categories)
 			c.setScore(0);
 		this.feedbackString = new ArrayList<>();
 		this.currentQuestion = this.getAllQuestions().get(0);
 	}
-	
+
 	public void advanceTest() {
 		if (this.getAllQuestions().indexOf(currentQuestion) + 1 < this.getAllQuestions().size())
 			this.currentQuestion = this.getAllQuestions().get(this.getAllQuestions().indexOf(currentQuestion) + 1);
@@ -97,7 +97,7 @@ public class Test {
 			list.addAll(c.getQuestions());
 		return list;
 	}
-	
+
 	public Category getCategoryOfQuestion(Question question) {
 		for (Category c : this.getCategories())
 			if (c.getQuestions().contains(question))
