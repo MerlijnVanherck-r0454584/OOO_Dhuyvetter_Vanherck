@@ -1,5 +1,6 @@
 package view.panels;
 
+import controller.Controller;
 import javafx.geometry.Pos;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -21,7 +22,7 @@ public class AssesMainPane extends BorderPane {
 	
 	
 	public AssesMainPane(Pane messagePane, Pane testPane, Pane categoryOverviewPane, Pane questionOverviewPane, QuestionDetailPane questionDetailPane, CategoryDetailPane categoryDetailPane) {
-
+		
 		FlowPane messageBox = new FlowPane(messagePane);
 		messageBox.setAlignment(Pos.CENTER);
 		messageTab = new Tab("Test", messageBox);

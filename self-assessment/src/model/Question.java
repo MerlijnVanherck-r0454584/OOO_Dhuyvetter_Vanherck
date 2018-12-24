@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -47,7 +48,9 @@ public class Question {
 	}
 	
 	public List<String> getRandomOrderAnswers() {
-		List<String> list = Arrays.asList(this.getAnswers());
+		List<String> list = new ArrayList<>();
+		for (int i = 0; i < this.answers.length; i++)
+			list.add(this.getAnswers()[i]);
 		Collections.shuffle(list);
 		return list;
 	}

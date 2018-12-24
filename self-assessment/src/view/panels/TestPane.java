@@ -1,13 +1,12 @@
 package view.panels;
 
-import java.util.ArrayList;
-import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
 import model.Question;
@@ -38,27 +37,28 @@ public class TestPane extends GridPane {
 		submitButton.setOnAction(processAnswerAction);
 	}
 
-	public List<String> getSelectedStatements() {
-		List<String> selected = new ArrayList<String>();
-		if (statementGroup.getSelectedToggle() != null) {
-			selected.add(statementGroup.getSelectedToggle().getUserData().toString());
-		}
-		return selected;
+	public String getAnswer() {
+		if (statementGroup.getSelectedToggle() == null)
+			return null;
+		return ((RadioButton) statementGroup.getSelectedToggle()).getText();
 	}
-
+	
 	public void setQuestion(Question question) {
+		RadioButton rb;
 		this.questionField.setText(question.getQuestionName());
+		int i = 1;
 		for (String s : question.getRandomOrderAnswers()) {
-			this.statementGroup.getToggles().add(new RadioButton(s));
+			rb = new RadioButton(s);
+			this.statementGroup.getToggles().add(rb);
+			add(rb, 0, i++, 2, 1);
 		}
 	}
 
 	public void clearFields() {
 		this.questionField.setText("");
-		this.statementGroup.getToggles().clear();
-	}
+		for (Toggle t : this.statementGroup.getToggles())
+			this.getChildren().remove(t);
 
-	public void setSubmitAction(EventHandler<ActionEvent> newAction) {
-		this.submitButton.setOnAction(newAction);
+		this.statementGroup.getToggles().clear();
 	}
 }

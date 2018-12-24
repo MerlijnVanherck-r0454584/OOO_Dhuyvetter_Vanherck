@@ -57,11 +57,11 @@ public class Main extends Application {
 			questionDetailPane.setSaveAction(qdListener);
 			questionDetailPane.setCancelAction(qdListener);
 			
-			MessageListener mListener = new MessageListener(controller, assesMainPane);
+			MessageListener mListener = new MessageListener(controller, testPane, assesMainPane);
 			messagePane.setTestAction(mListener);
 			
-			TestListener tListener = new TestListener(controller, testPane, assesMainPane);
-			testPane.setSubmitAction(tListener);
+			TestListener tListener = new TestListener(controller, testPane, messagePane, assesMainPane);
+			testPane.setProcessAnswerAction(tListener);
 			
 			root.getChildren().add(assesMainPane);
 			primaryStage.setScene(scene);
