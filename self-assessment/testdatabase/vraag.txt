@@ -1,2 +1,2 @@
-Does this question work?;UML;Yes/No
-Another question to test?;UML;Yes/No
+Does this question work?;UML;feedback 1;Yes/No
+Another question to test?;UML;feedback 2;Yes/No

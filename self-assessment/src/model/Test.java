@@ -1,13 +1,14 @@
 package model;
 
 import java.util.ArrayList;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 public class Test {
 	private ObservableList<Category> categories;
 	private Question currentQuestion = null;
+	private boolean useFeedback = false;
+	private ArrayList<String> feedbackString = new ArrayList<>();
 
 	public Question getCurrentQuestion() {
 		return currentQuestion;
@@ -37,6 +38,10 @@ public class Test {
 
 		return score;
 	}
+	
+	public void toggleUseFeedback() {
+		this.useFeedback = this.useFeedback ? false : true;
+	}
 
 	public int[] getScoreForCategory(Category category) {
 		int[] score = new int[2];
@@ -46,26 +51,36 @@ public class Test {
 		return score;
 	}
 	
-	public ArrayList<String> getScoreSummary() {
-		ArrayList<String> score = new ArrayList<String>();
+	public ArrayList<String> getResultsSummary() {
+		ArrayList<String> results = new ArrayList<String>();
 		
-		score.add("Total: " + this.getTotalScore()[0] + "/" + this.getTotalScore()[1]);
+		if (this.useFeedback) {
+			if (this.feedbackString.isEmpty())
+				results.add("Excellent! All questions answered correctly.");
+			else
+				results = this.feedbackString;
+		} else {
+			results.add("Total: " + this.getTotalScore()[0] + "/" + this.getTotalScore()[1]);
 		
-		for (Category c : this.categories) {
-			score.add(c.getName() + ": " + this.getScoreForCategory(c)[0] + "/" + this.getScoreForCategory(c)[1]);
+			for (Category c : this.categories) {
+				results.add(c.getName() + ": " + this.getScoreForCategory(c)[0] + "/" + this.getScoreForCategory(c)[1]);
+			}
 		}
 		
-		return score;
+		return results;
 	}
 
 	public void checkAnswer(String givenAnswer) {
 		if (this.currentQuestion.isCorrectAnswer(givenAnswer))
 			this.getCategoryOfQuestion(currentQuestion).increaseScore();
+		else
+			this.feedbackString.add(this.currentQuestion.getFeedback());
 	}
 	
 	public void startTest() {
 		for (Category c : this.categories)
 			c.setScore(0);
+		this.feedbackString = new ArrayList<>();
 		this.currentQuestion = this.getAllQuestions().get(0);
 	}
 	

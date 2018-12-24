@@ -9,4 +9,6 @@ public abstract class DBImporter {
 	public abstract ArrayList<Category> getCategories();
 
 	public abstract ArrayList<Question> getQuestions(Category category);
+	
+	public abstract String getResultOption();
 }

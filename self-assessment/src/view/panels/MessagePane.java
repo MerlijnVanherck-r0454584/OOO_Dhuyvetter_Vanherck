@@ -29,6 +29,7 @@ public class MessagePane extends GridPane {
 		this.setHgap(5);
 		
 		results = new Label();
+		results.setText("You have not taken this test yet.");
 		add(results, 0, 0, 1, 1);
 
 		testButton = new Button("Evaluate");

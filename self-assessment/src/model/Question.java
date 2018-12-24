@@ -9,6 +9,7 @@ public class Question {
 	private String questionName;
 	private String[] answers; //index 0 is correct answer
 	private String category; //helper string for view
+	private String feedback;
 
 	public String getQuestionName() {
 		return questionName;
@@ -26,10 +27,19 @@ public class Question {
 		this.answers = answers;
 	}
 
-	public Question(String questionName, String[] answers, String category) {
+	public String getFeedback() {
+		return feedback;
+	}
+
+	public void setFeedback(String feedback) {
+		this.feedback = feedback;
+	}
+
+	public Question(String questionName, String[] answers, String category, String feedback) {
 		this.questionName = questionName;
 		this.answers = answers;
 		this.category= category;
+		this.feedback = feedback;
 	}
 
 	public Boolean isCorrectAnswer(String givenAnswer) {

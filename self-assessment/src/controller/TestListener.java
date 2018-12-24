@@ -31,7 +31,7 @@ public class TestListener implements EventHandler<ActionEvent> {
 		if (controller.getTest().getCurrentQuestion() != null)
 			testPane.setQuestion(controller.getTest().getCurrentQuestion());
 		else {
-			messagePane.displayResults(controller.getTest().getScoreSummary());
+			messagePane.displayResults(controller.getTest().getResultsSummary());
 			assesMainPane.toggleTestTab();
 		}
 	}

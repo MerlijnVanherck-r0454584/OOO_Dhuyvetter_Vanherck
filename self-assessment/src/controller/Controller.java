@@ -20,6 +20,8 @@ public class Controller {
 		for (Category c : test.getCategories()) {
 			c.initQuestions(dbController.getQuestions(c));
 		}
+		if (dbController.checkUseFeedback())
+			test.toggleUseFeedback();
 	}
 	
 	

@@ -19,6 +19,10 @@ public class DbController {
 	public ArrayList<Question> getQuestions(Category c) {
 		return importer.getQuestions(c);
 	}
+	
+	public boolean checkUseFeedback() {
+		return importer.getResultOption().equals("feedback") ? true : false ;
+	}
 
 	public void storeCategories() {
 		// TODO Auto-generated method stub
